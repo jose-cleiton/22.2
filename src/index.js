@@ -1,4 +1,4 @@
-const fs = require('fs').promises;
+const fs = require('fs');
 
 const path = require('path');
 
@@ -39,13 +39,10 @@ class Main {
       console.error(err);
     }
   };
-  makePokemonDir = async () => {
-    try {
-      await fs.mkdir(this.pokemonDir, { recursive: true });
-    } catch (err) {
-      throw err;
-    }
+  makePokemonDir = () => {
+    fs.mkdirSync(this.pokemonDir, { recursive: true });
   };
+  
   
 }
 
