@@ -42,15 +42,13 @@ const pokemonsImag = async (nome) => {
   for (const key in sprites) {
     const value = sprites[key];
     
-    // Se o valor não for nulo e a chave ainda não estiver presente no objeto final, adicione-o ao objeto "type"
-    if (value !== null && !result.hasOwnProperty(key)) {
+    // Se o valor não for nulo, a chave ainda não estiver presente no objeto final e não for "versions", adicione-o ao objeto "type"
+    if (value !== null && !result.hasOwnProperty(key) && key !== "versions") {
       result.type[key] = value;
     }
   }
   
   console.log(result);
-  
-
   
 
 
