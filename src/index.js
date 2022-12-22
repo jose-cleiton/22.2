@@ -9,7 +9,7 @@ class Main {
 
   async start() {
     console.clear();
-    await this.pokemon.pokemonsImag('bulbasaur');
+    await this.pokemon.pokemonsImag('pikachu');
   }
 }
 

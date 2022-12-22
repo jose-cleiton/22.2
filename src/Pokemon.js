@@ -1,4 +1,4 @@
-const API = require('./API');
+
 class Pokemon {
   constructor(api) {
     this.api = api;
@@ -35,8 +35,4 @@ class Pokemon {
   }
 }
 
-
-
-
-
- module.exports = Pokemon;
+module.exports = Pokemon;

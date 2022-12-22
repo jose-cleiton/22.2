@@ -1,8 +1,9 @@
 {
-  "name": "22.2",
+  "name": "meu-projeto-pokemon",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Uma aplicação para obter informações sobre pokemons usando a API do Pokémon",
+  "main": "src/index.js",
+
   "scripts": {
     "start": "node src",
     "lint": "eslint src",
@@ -12,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.2.1",
-    "rimraf": "^3.0.2"
+    "https": "^1.0.0"
   }
+  
 }

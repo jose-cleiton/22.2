@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app:
+    build: .
+    command: npm start
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+  api:
+    image: mhart/alpine-node:12
