@@ -11,32 +11,45 @@ const pokemonsImag = async (nome) => {
   
   const result = {};
 
-// Adicione os valores de "master" ao objeto final
-result.master = Object.values(sprites).filter(value => value !== null);
-
-// Adicione os valores de "other" ao objeto final
-result.other = [];
-for (const key in sprites.other) {
-  const value = sprites.other[key];
-  result.other = result.other.concat(Object.values(value).filter(val => val !== null));
-}
-
-// Adicione os valores de "type" ao objeto final
-result.type = [];
-for (const key in sprites.type) {
-  const value = sprites.type[key];
-  result.type = result.type.concat(Object.values(value).filter(val => val !== null));
-}
-
-// Remova "versions" do objeto final
-delete sprites.versions;
-
-// Adicione o restante do objeto "sprites" ao objeto final
-Object.assign(result, sprites);
-
-console.log(result);
-
-
+  // Inicialize o array "master"
+  result.master = [];
+  
+  // Itera sobre as chaves do objeto "sprites"
+  for (const key in sprites) {
+    const value = sprites[key];
+    
+    // Se o valor não for nulo, adicione-o ao array "master"
+    if (value !== null) {
+      result.master.push(value);
+    }
+  }
+  
+  // Inicialize o array "other"
+  result.other = [];
+  
+  // Itera sobre o objeto "other"
+  for (const key in sprites.other) {
+    const value = sprites.other[key];
+    
+    // Adicione as URLs do objeto "value" ao array "other"
+    result.other = result.other.concat(Object.values(value).filter(val => val !== null));
+  }
+  
+  // Inicialize o objeto "type"
+  result.type = {};
+  
+  // Itera sobre as chaves do objeto "sprites"
+  for (const key in sprites) {
+    const value = sprites[key];
+    
+    // Se o valor não for nulo e a chave ainda não estiver presente no objeto final, adicione-o ao objeto "type"
+    if (value !== null && !result.hasOwnProperty(key)) {
+      result.type[key] = value;
+    }
+  }
+  
+  console.log(result);
+  
 
   
 
