@@ -8,7 +8,6 @@ const pokemonsImag = async (nome) => {
  
  
   const pkm = sprites
-  
   const result = {};
 
   // Inicialize o array "master"
@@ -18,8 +17,8 @@ const pokemonsImag = async (nome) => {
   for (const key in sprites) {
     const value = sprites[key];
     
-    // Se o valor não for nulo, adicione-o ao array "master"
-    if (value !== null) {
+    // Se o valor não for nulo e não for um objeto, adicione-o ao array "master"
+    if (value !== null && typeof value !== 'object') {
       result.master.push(value);
     }
   }
@@ -42,14 +41,16 @@ const pokemonsImag = async (nome) => {
   for (const key in sprites) {
     const value = sprites[key];
     
-    // Se o valor não for nulo, a chave ainda não estiver presente no objeto final e não for "versions", adicione-o ao objeto "type"
-    if (value !== null && !result.hasOwnProperty(key) && key !== "versions") {
+    // Se o valor não for nulo, a chave ainda não estiver presente no objeto final e a chave não for "versions", adicione-o ao objeto "type"
+    if (value !== null && !result.hasOwnProperty(key) && key !== 'versions') {
       result.type[key] = value;
     }
   }
   
   console.log(result);
   
+
+
 
 
  
