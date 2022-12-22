@@ -8,46 +8,49 @@ const pokemonsImag = async (nome) => {
  
  
   const pkm = sprites
+  
+  
   const result = {};
 
-  // Inicialize o array "master"
-  result.master = [];
+// Inicialize o array "master"
+result.master = [];
+
+// Itera sobre as chaves do objeto "sprites"
+for (const key in sprites) {
+  const value = sprites[key];
   
-  // Itera sobre as chaves do objeto "sprites"
-  for (const key in sprites) {
-    const value = sprites[key];
-    
-    // Se o valor não for nulo e não for um objeto, adicione-o ao array "master"
-    if (value !== null && typeof value !== 'object') {
-      result.master.push(value);
-    }
+  // Se o valor não for nulo e não for um objeto, adicione-o ao array "master"
+  if (value !== null && typeof value !== 'object') {
+    result.master.push(value);
   }
+}
+
+// Inicialize o array "other"
+result.other = [];
+
+// Itera sobre o objeto "other"
+for (const key in sprites.other) {
+  const value = sprites.other[key];
   
-  // Inicialize o array "other"
-  result.other = [];
+  // Adicione as URLs do objeto "value" ao array "other"
+  result.other = result.other.concat(Object.values(value).filter(val => val !== null));
+}
+
+// Inicialize o objeto "type"
+result.type = [];
+
+// Itera sobre as chaves do objeto "sprites"
+for (const key in sprites) {
+  const value = sprites[key];
   
-  // Itera sobre o objeto "other"
-  for (const key in sprites.other) {
-    const value = sprites.other[key];
-    
-    // Adicione as URLs do objeto "value" ao array "other"
-    result.other = result.other.concat(Object.values(value).filter(val => val !== null));
+  // Se o valor não for nulo, não for um objeto e a chave não for "versions", adicione-o ao array "type"
+  if (value !== null && typeof value !== 'object' && key !== 'versions') {
+    result.type.push(value);
   }
-  
-  // Inicialize o objeto "type"
-  result.type = {};
-  
-  // Itera sobre as chaves do objeto "sprites"
-  for (const key in sprites) {
-    const value = sprites[key];
-    
-    // Se o valor não for nulo, a chave ainda não estiver presente no objeto final e a chave não for "versions", adicione-o ao objeto "type"
-    if (value !== null && !result.hasOwnProperty(key) && key !== 'versions') {
-      result.type[key] = value;
-    }
-  }
-  
-  console.log(result);
+}
+
+console.log(result);
+
   
 
 
